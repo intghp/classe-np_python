@@ -67,18 +67,18 @@ def existe_subconjunto(numeros, n, alvo, memo=None):
     if (n, alvo) in memo:
         return memo[(n, alvo)]
 
-    # (3) Casos base
+    # Casos base
     if alvo == 0:
         return True
     if n == 0:
         return False
 
-    # (4) Poda: se a soma total for menor que o alvo, não há solução
+    # (3) Poda: se a soma total for menor que o alvo, não há solução
     if sum(numeros[:n]) < alvo:
         memo[(n, alvo)] = False
         return False
 
-    # (5) Testa incluir ou não o último número
+    # (4) Testa incluir ou não o último número
     if numeros[n - 1] > alvo:
         resultado = existe_subconjunto(numeros, n - 1, alvo, memo)
     else:
@@ -95,7 +95,7 @@ def existe_subconjunto(numeros, n, alvo, memo=None):
 numeros = [3, 2, 7, 1]
 alvo = 6
 
-# Ordena a lista para melhorar as podas
+# (5) Ordena a lista para melhorar as podas
 numeros.sort()
 
 n = len(numeros)
